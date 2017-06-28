@@ -2,6 +2,7 @@
 @section('content')
 
 
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -18,6 +19,12 @@
         </div>
         @endsection('menu')
 
+        @if(Session::has('flash_message'))
+        {{Session::get('flash_message')}}
+        @endif
+
+
+
 
         <div class="container">
             <!-- Trigger the modal with a button -->
@@ -33,6 +40,9 @@
                     <button class="btn btn-info btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Usuario<span class="caret"></span></button>
                     <ul class="dropdown-menu">
                         <li><a data-toggle="modal" data-target="#SaveUser">Agregar Usuario</a></li>
+                        <li><a data-toggle="modal" href="{{url('usu')}}">Listar Usuario</a></li>
+                        <li><a data-toggle="modal" data-target="#BuscarUsuario">Consultar Usuarios</a></li>
+                        <li><a data-toggle="modal" href="{{url('usu2')}}">Eliminar Usuarios</a></li>
                     </ul>
                 </div>
                 <p></p>
@@ -83,7 +93,7 @@
                         <p>Tipo De Usuario : 
                             <select name="perfil">
                                 <option>Seleccionar Tipo</option>
-                                <option value="2">Profesor</option>
+                                <option value="2">Secretaria</option>
                                 <option value="3">UTP</option>
                                 <option value="4">Director</option>
                             </select> 
@@ -202,7 +212,7 @@
             </div>
         </div>
 
-        <!--Alumnos-->
+        <!--Alumnos Buscar-->
 
         <div class="modal fade" id="BuscarAlumno" role="dialog">
             <div class="modal-dialog">
@@ -228,6 +238,35 @@
 
             </div>
         </div>
+
+
+        <!--Usuario Buscar-->
+
+        <div class="modal fade" id="BuscarUsuario" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+
+                <div class="modal-content" style="margin: 200px 100px;">
+                    <div class="modal-header">
+                        {!!   Form::open(['url' => 'usu1']);!!}
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Buscar Usuario</h4>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <p> Nombre Usuario  : <input type="text" name="rut" value="" placeholder="Ingresar rut sin puntos ni digito verificado" required> </p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="Consultar" />
+
+                    </div>
+                    {!! Form::close() !!}
+
+                </div>
+
+            </div>
+        </div>
+
 
     </div>
     @endsection('nab')

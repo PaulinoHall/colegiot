@@ -1,4 +1,4 @@
-@extends('formUTP')
+@extends('index')
 @section('form')
 
 <html>
@@ -37,6 +37,7 @@
                         <td>Telefono :</td>
                         <td>{{$alu->telefono}}</td>
                     </tr>
+                    
                     @endforeach
                 </table>
             </div>
